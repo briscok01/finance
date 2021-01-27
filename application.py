@@ -186,7 +186,8 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
-    return apology("TODO")
+    stocks = db.execute("SELECT symbol FROM purchases WHERE id = ? GROUP BY symbol", session["user_id"])
+    return render_template("sell.html", stocks=stocks)
 
 
 def errorhandler(e):
