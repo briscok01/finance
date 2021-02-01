@@ -1,6 +1,5 @@
-''' export API_KEY=pk_571f8972b0824b41af6017d134e6d77a '''
-''' CREATE TABLE 'purchases' ('id' integer PRIMARY KEY AUTOINCREMENT NOT NULL, 'user_id' integer, 'symbol' text, 'share_price' real, 'num_shares' integer, 'total_cost' real, 'timestamp' timestamp) '''
-
+''' my API key '''
+''' export API_KEY=pk_9e1aa25dce354045abd14b316e3601dc  '''
 
 import os
 import datetime
