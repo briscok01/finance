@@ -185,8 +185,25 @@ def register():
 @app.route("/sell", methods=["GET", "POST"])
 @login_required
 def sell():
+     if request.method == "POST":
+        currentTime = datetime.datetime.now()
+        symbol = request.form.get("symbol")
+        numOfShares = request.form.get("shares")
+        sold = lookup(symbol)
+        price=sold["price"]
+        cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
+        cashValue = float(cash[0]["cash"])
+
+        valueOfShares = int(numOfShares) * price
+        balance = cashValue - costOfShares
+
+        
+            return render_template("bought.html", balance=balance, costOfShares=costOfShares, bought=bought, numOfShares=numOfShares, cash=cash[0]["cash"])
+    return render_template("buy.html")
+
     """Sell shares of stock"""
     stocks = db.execute("SELECT symbol FROM purchases WHERE id = ? GROUP BY symbol", session["user_id"])
+    return render_template("sold.html", balance=balance, valueOfShares=valueOfShares, sold=sold, numOfShares=numOfShares, cash=cash[0]["cash"])
     return render_template("sell.html", stocks=stocks)
 
 
