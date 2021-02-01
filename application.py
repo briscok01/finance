@@ -215,10 +215,6 @@ def sell():
     return render_template("sell.html", stocks=stocks)
 
 
-
-
-
-
 def errorhandler(e):
     """Handle error"""
     if not isinstance(e, HTTPException):
